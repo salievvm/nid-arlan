@@ -1,0 +1,27 @@
+.page-content {
+    overflow: auto;
+    height: calc(100vh - 90px);
+}
+
+.page-content__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.page-content__col-8 {
+    width: 66.66666666666667%;
+}
+
+.page-content__col-4 {
+    width: 33.33333333333333%;
+}
+
+.container-margin {
+    margin-right: 30px;
+}
+
+.license__image-pdf {
+    width: 150px;
+}
+

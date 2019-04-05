@@ -1,0 +1,19 @@
+.sidebar{
+    min-width: 90px;
+    position: relative;
+    height: 100vh;
+    padding-top: 60px;
+}
+
+.sidebar_black {
+    background-color: #000;
+    border-right: 1px solid #404040;
+}
+
+.sidebar-inner{
+    width: 60px;
+    position: fixed;
+    height: 100vh;
+    margin: 0 15px;
+    text-align: center;
+}
