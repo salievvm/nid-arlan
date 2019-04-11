@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Logo from '../components/Logo/Logo';
+import LogoTypo from '../img/logo_typo.svg';
+
+import './Home.sass';
 
 class Home extends Component {
   render() {
-    const logo = '/img/logo_black_bg_clean.png';
     return (
         <div className="home-page__main-container">
-            <Logo path={logo} size='l' />
+            <Logo logo={LogoTypo} size='l' />
         </div>
     );
   }

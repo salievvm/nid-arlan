@@ -4,7 +4,7 @@ import './Actionbar.sass';
 
 class Actionbar extends Component {
   render() {
-    const  items = this.props.items;
+    const { items, handleClick } = this.props;
     return (
         <nav className="actionbar">
             {
@@ -12,6 +12,8 @@ class Actionbar extends Component {
                     return <ActionbarButton
                             icon={item.icon}
                             name={item.name}
+                            href={item.href}
+                            handleClick={handleClick}
                             key={item.name}
                              />
                 })

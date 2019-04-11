@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import Button from '../components/Button/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 class License extends Component {
   render() {
     return (
       <div>
-        <h1 className="page-main-title">Лицензия второй категории</h1>
-        <div className="page-content__col-8">
-            <div className="page-content__row">
-              <div className="container-margin">
-                <img src="/img/icons/pdf.png" alt="Лицензия на проведение работ.pdf" className="license__image-pdf" />
-              </div>
-              <article>
-                <p className="article-text article-text__no-top">
-                  Компания «Арлан» имеет государственную лицензию 2 категории по всем видам проектных работ.
-                </p>
-                <p className="article-text">
-                  Штат работников компании укомплектован только квалифицированными специалистами с опытом работы в области проектирования не менее 5 лет.
-                </p>
-                <Button 
+        <Typography variant='h1'>Лицензия второй категории</Typography>
+        <Grid item xs={12} lg={8} xl={6}  >
+        <div className="page-content__row">
+
+          <div className="container-image__license container-margin">
+            <img src="/img/icons/pdf.png" alt="Лицензия на проведение работ.pdf" className="license__image-pdf" />
+          </div>
+          <article>
+
+            <Typography variant="body1" >
+              Компания «Арлан» имеет государственную лицензию 2 категории по всем видам проектных работ.
+            </Typography>
+            <Typography variant="body1" >
+            Штат работников компании укомплектован только квалифицированными специалистами с опытом работы в области проектирования не менее 5 лет.
+            </Typography>
+            <Button 
                   name="Открыть лицензию"
                   theme="default"
                   size="m" />
               </article>
-            </div>
-        </div>
+
+                  </div>
+        </Grid>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import './PageContent.css';
 class PageContent extends Component {
   render() {
     return (
-        <div className="page-content">
+        <div className="page-content content">
             {this.props.children}
         </div>
     );

@@ -20,12 +20,10 @@ class ButtonBurger extends Component {
     burgerTime() {
         const { isClosed, trigger } = { ...this.state };
         if (isClosed === true) {
-            console.log('this.state', this.state);
             trigger.classList.remove('is-open');
             trigger.classList.add('is-closed');
             this.setState( { 'isClosed': false } );
         } else {
-            console.log('trigger', trigger);
             trigger.classList.remove('is-closed');
             trigger.classList.add('is-open');
             this.setState( { 'isClosed': true } );

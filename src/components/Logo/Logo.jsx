@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Logo.sass';
-import logo from '../../logo_black_bg_clean.png';
 
 class Logo extends Component {
   state = {
@@ -9,7 +8,7 @@ class Logo extends Component {
   render() {
     const className = `logo logo__size-${this.state.size}`;
     return (
-        <img className={className}  src={logo} alt="Логотип ТОО Арлан"/>
+        <img className={className}  src={this.props.logo} alt="Логотип ТОО Арлан"/>
     );
   }
 }

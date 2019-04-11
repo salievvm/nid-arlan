@@ -1,3 +1,7 @@
+$headerHeight: 90px
+$mdHeight: $headerHeight * 1.15
+$lgHeight: $headerHeight * 1.5
+
 @font-face 
   font-family: 'RopaSansPro'
   font-style: normal
@@ -26,18 +30,35 @@
   src: url('/fonts/RopaSansPro-Thin.otf') 
 
 
+
+/* width */
+::-webkit-scrollbar 
+    width: 7.5px
+    height: 7.5px
+    background: inherit
+
+/* Track */
+::-webkit-scrollbar-track 
+	background: inherit
+	
+::-webkit-scrollbar-corner
+    background: inherit
+ 
+/* Handle */
+::-webkit-scrollbar-thumb 
+    background: #404040 
+    border-radius: 8px
+    // border: 2.5px solid
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover 
+    background: #606060 
+
 /*** CONTENT */
 .content 
-  margin: 0 30px
+  padding: 0 30px
   width: 100%
-
-
-@media screen and (min-width: 1440px)
-  .content 
-    margin: 0 90px
-    width: 100%
-   
-
 
 body 
   overflow: hidden
@@ -55,6 +76,7 @@ p, span, article, button, nav, a
   display: flex
   justify-content: space-between
   align-items: center
+  height: $mdHeight
 
 
 /*** HOME PAGE */
@@ -78,6 +100,10 @@ p, span, article, button, nav, a
   padding-top: 0
   margin-top: 0
 
+.article-text
+  margin-bottom: 1.5rem
+  font-family: 'RopaSansPro'
+
 
 /*** BUTTONS */
 button 
@@ -88,3 +114,66 @@ button
 
 button:active, button:focus, button:hover, button:visited 
   outline: none
+
+ul
+  margin: 0
+  padding-inline-start: 20px
+
+.page-content 
+  height: calc(100vh - 90px)
+  padding-bottom: 60px
+  overflow-y: auto
+  overflow-x: hidden
+
+.page-content__row 
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+  align-items: center
+
+.page-content__col-8 
+  width: 66.66666666666667%
+
+.page-content__col-4 
+  width: 33.33333333333333%
+
+.container-margin 
+  margin-right: 30px
+
+.container-image__license
+  display: none
+
+.license__image-pdf 
+  width: 120px
+
+.vertical-menu__items
+    margin-top: 26px
+
+@media screen and (min-width: 768px)
+  .container-image__license
+    display: block
+  .main-header
+    height: $mdHeight
+  .page-content
+    height: calc(100vh - 103.5px)
+  .sidebar-inner
+    margin-top: 36px
+
+@media screen and (min-width: 1441px)
+  .main-header
+    height: $lgHeight
+  .page-content
+    height: calc(100vh - 135px)
+  .sidebar-inner
+    margin-top: 52px
+  .vertical-menu__items
+    margin-top: 41px
+  .content 
+    padding: 0 90px
+    width: 100%
+
+@media screen and (max-width: 768px) 
+  .main h1
+    font-size: 28pt
+  .navbar__link 
+    display: none

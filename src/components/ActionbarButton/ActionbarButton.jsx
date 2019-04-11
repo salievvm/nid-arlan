@@ -3,10 +3,10 @@ import './ActionbarButton.sass';
 
 class ActionbarButton extends Component {
   render() {
-    const  { icon, name } = { ...this.props }
+    const  { icon, name, href, handleClick } = { ...this.props }
     return (
-        <button className="actionbar-button">
-            <span>{name}</span>
+        <button className="actionbar-button actionbar-button__white" onClick={handleClick} data-handle={href}>
+            <span className="actionbar-button__title">{name}</span>
             <img src={icon} alt={name} className="actionbar-button__icon" />
         </button>
     );
