@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import TagCloud from 'react-tag-cloud';
 import Grid from '@material-ui/core/Grid';
+import { withUserAgent } from "react-useragent";
 
 // import randomColor from 'randomcolor';
 
@@ -25,6 +26,8 @@ class Team extends Component {
   // }
   render() {
     const { team } = this.state;
+    const isMobile = this.props.ua.mobile ? true : false;
+
 
     return (
       <div>
@@ -36,7 +39,8 @@ class Team extends Component {
           Мы команда квалифицированных специалистов с опытом работы в области проектирования не менее 5 лет.
         </Typography>
         <Grid item md={8} xs={12}  >
-        <TagCloud 
+        {!isMobile ? (
+          <TagCloud 
           style={{
             fontFamily: 'RopaSansPro',
             fontSize: 13,
@@ -51,6 +55,15 @@ class Team extends Component {
             return <div key={person.title} style={{fontSize: person.fontSize}}>{person.title}</div>
           })}
         </TagCloud>
+        ) : (
+          <Typography variant="ul" gutterBottom >
+            {team.map(person => {
+              return <li key={person.title} >{person.title}</li>
+            })}
+          </Typography>
+        )
+        }
+        
         </Grid>
 
       </div>
@@ -60,4 +73,4 @@ class Team extends Component {
 
 
 
-export default Team;
+export default withUserAgent(Team);

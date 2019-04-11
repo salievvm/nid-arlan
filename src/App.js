@@ -33,6 +33,8 @@ import Logo from './components/Logo/Logo';
 import Actionbar from './components/Actionbar/Actionbar';
 import MobileMenu from './components/MobileMenu/MobileMenu';
 
+import { UserAgent } from "react-useragent";
+
 class Field {
   constructor(label, type, id, required = false, autoFocus = false, multiline = false){
     return this.field = {
@@ -85,7 +87,7 @@ class App extends Component {
         title: 'Заказ обратного звонка',
         subtitle: 'Оставьте свой номер, и мы Вам перезвоним!',
         fields: [ 
-          new Field('Телефон', 'phone', 'phone', true, true),
+          fields.phone,
         ]
       }
     },
@@ -171,7 +173,7 @@ class App extends Component {
     }
   toggleForm = (e) => {
     const isFormOpen = !this.state.isFormOpen,
-          curForm = e.currentTarget.getAttribute('data-handle');
+          curForm = e ? e.currentTarget.getAttribute('data-handle') : '';
 
     this.setState( { isFormOpen, curForm }, () => {
       console.log('e', this.state.isFormOpen);
@@ -215,7 +217,11 @@ class App extends Component {
                     </Switch>
                   </PageContent>
                 </Main>
-                <MobileMenu />
+                <UserAgent>
+                  {({ ua }) => {
+                    return ua.mobile ? <MobileMenu /> : false;
+                  }}
+                </UserAgent>
               </Page>
             </MuiThemeProvider>
           </CssBaseline>

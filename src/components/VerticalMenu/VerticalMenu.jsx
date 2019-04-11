@@ -8,7 +8,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 
-
 function arrowGenerator(color) {
   return {
     '&[x-placement*="bottom"] $arrow': {
@@ -77,12 +76,12 @@ const styles = theme => ({
   arrowPopper: arrowGenerator(theme.palette.grey[900]),
   arrow: {
     position: 'absolute',
-    fontSize: 16,
+    fontSize: 12,
     width: '3em',
     height: '3em',
     '&::before': {
       content: '""',
-      margin: 'auto',
+      margin: '5px auto',
       display: 'block',
       width: 0,
       height: '50%',
@@ -139,8 +138,10 @@ class VerticalMenu extends Component {
       arrowRef: node,
     });
   };
+
   render() {
     const { items, classes } = this.props;
+
     return (
         <nav className="vertical-menu">
             {/* <ButtonBurger /> */}
@@ -148,6 +149,7 @@ class VerticalMenu extends Component {
                 <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                     <MenuIcon />
                 </IconButton>
+              
             </Toolbar>
             <div className="vertical-menu__items">
                 {

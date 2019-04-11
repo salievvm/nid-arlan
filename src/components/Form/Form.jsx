@@ -9,11 +9,27 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PhoneFormatCustom from './NumberFormat';
 import LeadCreate from '../Bitrix24/Lead';
 
-export default class FormDialog extends React.Component {
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const styles = {
+  root: {
+    flexGrow: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    height: '100px'
+  },
+};
+
+class FormDialog extends React.Component {
   state = {
     formFields: {},
     formData: new FormData(),
     isSending: false,
+    open: true
   }
 
   componentDidMount() {
@@ -43,8 +59,13 @@ export default class FormDialog extends React.Component {
     this.setState( { isSending, formData } );
   }
 
+  handleLeadResult = () => {
+    this.props.toggleForm();
+  }
+
+
   render() {
-    const { toggleForm, isFormOpen, data } = this.props;
+    const { toggleForm, isFormOpen, data, classes } = this.props;
    
     return (
       <div>
@@ -53,13 +74,17 @@ export default class FormDialog extends React.Component {
           onClose={toggleForm}
           aria-labelledby="form-dialog-title"
         >
-          {this.state.isSending ? <LeadCreate formData={this.state.formData} formTitle={data.title} /> : false  }
+          {this.state.isSending ? <LeadCreate handleLeadResult={this.handleLeadResult} formData={this.state.formData} formTitle={data.title} /> : false  }
           <form onSubmit={this.handleSubmit}>
           <DialogTitle id="form-dialog-title">{data.title}</DialogTitle>
           <DialogContent>
-            <DialogContentText>{data.subtitle}
+            <DialogContentText>{!this.state.isSending ? data.subtitle : false}
             </DialogContentText>
-            {data.fields.map(field =>
+            {this.state.isSending ? 
+            <div className={classes.root}>
+             <CircularProgress disableShrink />
+             </div> : 
+             data.fields.map(field =>
               field.id !== 'PHONE' ?
               <TextField
                 autoFocus={field.autoFocus}
@@ -86,6 +111,7 @@ export default class FormDialog extends React.Component {
                 fullWidth />
             )}
           </DialogContent>
+          {!this.state.isSending ? 
           <DialogActions>
             <Button type="submit" color="primary">
               Отправить заявку
@@ -93,10 +119,12 @@ export default class FormDialog extends React.Component {
             <Button onClick={toggleForm} color="primary">
               Закрыть
             </Button>
-          </DialogActions>
+          </DialogActions> : false}
           </form>
         </Dialog>
       </div>
     );
   }
 }
+
+export default withStyles(styles)(FormDialog);
