@@ -22,10 +22,12 @@ class License extends Component {
             <Typography variant="body1" >
             Штат работников компании укомплектован только квалифицированными специалистами с опытом работы в области проектирования не менее 5 лет.
             </Typography>
+            <a href="/img/license.pdf" target="_blank" >
             <Button 
                   name="Открыть лицензию"
                   theme="default"
                   size="m" />
+                  </a>
               </article>
 
                   </div>

@@ -18,3 +18,9 @@
         background-size: 600px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .section_theme_black {
+        background-size: 300px;
+    }
+}

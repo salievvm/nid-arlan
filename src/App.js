@@ -206,7 +206,7 @@ class App extends Component {
                   <PageContent>
                     <Switch>
                       <Route exact path="/" render={() => <Home />} />
-                      <Route path="/about" component={About} />
+                      <Route path="/about" render={() => <About  handleClick={this.toggleForm} items={this.state.actionBarItems}/>} />
                       <Route path="/we-are" component={WeAre} />
                       <Route path="/license" component={License} />
                       <Route path="/our-projects" component={Projects} />

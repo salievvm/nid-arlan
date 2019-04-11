@@ -19,6 +19,8 @@ class Home extends Component {
             Сделав заказ в нашей компании, Вы получите индивидуальный проект и персональный подход. Мы выполняем ПСД на строительство и реконструкцию объектов, в рамках II категории Государственной лицензии на всей территории Республики Казахстан.
           </Typography>
           <Button 
+              handleClick={this.props.handleClick} 
+              dataHandle='new-project'
               name="Заказать проект"
               theme="default"
               size="m" />
