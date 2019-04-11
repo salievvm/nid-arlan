@@ -64,26 +64,22 @@ handleClick = event => {
   handleClose = (page) => {
        if (typeof page !== 'object') {
         //   console.log('page', typeof page);
-          this.setState( {curPage: page, redirect: true});
+          this.setState( {curPage: page, redirect: true}, () => this.setState({redirect: false}));
         }
     this.setState({ anchorEl: null });
     // console.log('state', this.state);
   };
-
-  componentWillUpdate(){
-      console.log('stateOnUpdate', this.state);
-  }
 
   render() {
     const { anchorEl, menuItems, curPage, redirect } = this.state;
     const open = Boolean(anchorEl);
     const { classes } = this.props;
 
-    // console.log('open', open);
+    console.log('state', this.state);
 
     return (
       <div>
-        {/* <Fab color="primary" aria-label="Edit" className={classes.fab} onClick={this.handleClick} aria-label="Меню"
+        <Fab color="primary" aria-label="Edit" className={classes.fab} onClick={this.handleClick} aria-label="Меню"
                 aria-owns={open ? 'long-menu' : undefined}
                 aria-haspopup="true">
                 <MenuIcon />
@@ -103,42 +99,13 @@ handleClick = event => {
           }}
         >
           {menuItems.map(item => (
-            <MenuItem key={item.page} selected={item.page === {curPage}} onClick={() => this.handleClose(item.page)}>
+            <MenuItem key={item.page} selected={item.page === this.state.curPage} onClick={() => this.handleClose(item.page)}>
               {item.name}
             </MenuItem>
           ))}
         </Menu>
-        <Route render={() => redirect === true ? <Redirect to={`/${this.state.curPage}`} /> : false }/> */}
 
-        <div>
-        <IconButton
-          aria-label="More"
-          aria-owns={open ? 'long-menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          <MoreVertIcon />
-        </IconButton>
-        <Menu
-          id="long-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={this.handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: 200,
-            },
-          }}
-        >
-                    {menuItems.map(item => (
-            <MenuItem key={item.page} selected={item.page === {curPage}} onClick={() => this.handleClose(item.page)}>
-              {item.name}
-            </MenuItem>
-          ))}
-        </Menu>
-        <Route render={() => redirect === true ? <Redirect to={`/${this.state.curPage}`} /> : false }/> 
-      </div>
+        {this.state.redirect === true ? <Redirect to={`/${this.state.curPage}`} /> : false } 
       </div>
     );
   }
